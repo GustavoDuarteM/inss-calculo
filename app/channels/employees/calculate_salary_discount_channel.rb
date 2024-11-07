@@ -1,13 +1,17 @@
-class Employees::CalculateSalaryDiscountChannel < ApplicationCable::Channel
-  def subscribed
-    stream_from "employees:calculate_salary_discount#{params[:channel_id]}"
-  end
+# frozen_string_literal: true
 
-  def calculate_salary_discount(data)
-    base_salary = data['base_salary'].to_f
-    salary_discount = INSS::DiscountCalculation.new(base_salary).call
+module Employees
+  class CalculateSalaryDiscountChannel < ApplicationCable::Channel
+    def subscribed
+      stream_from "employees:calculate_salary_discount#{params[:channel_id]}"
+    end
 
-    ActionCable.server.broadcast "employees:calculate_salary_discount#{params[:channel_id]}",
-                                 { salary_discount: salary_discount }
+    def calculate_salary_discount(data)
+      base_salary = data['base_salary'].to_f
+      salary_discount = INSS::DiscountCalculation.new(base_salary).call
+
+      ActionCable.server.broadcast "employees:calculate_salary_discount#{params[:channel_id]}",
+                                   { salary_discount: salary_discount }
+    end
   end
 end

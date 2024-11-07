@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :inss_discount_table, class: 'Inss::DiscountTable' do
     min_range { 0 }

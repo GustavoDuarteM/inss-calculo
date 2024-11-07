@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Employees
   class EmployeesCategoryTableComponent < ViewComponent::Base
     def classificated_salaries
