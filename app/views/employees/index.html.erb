@@ -1,3 +1,8 @@
+<h1>Empregados</h1>
+<hr>
 <div class=''>
+  <div class=''>
+    <%= link_to 'Cadastrar Empregado', new_employee_path, class: '' %>
+  </div>
   <%= render Employees::EmployeesCategoryTableComponent.new %>
 </div>
