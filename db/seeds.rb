@@ -13,5 +13,13 @@
   { min_range: 2089.61, max_range: 3134.4, discount_percentage: 0.12 },
   { min_range: 3134.41, max_range: 6101.06, discount_percentage: 0.14 }
 ].each do |discount_table_item|
-  Inss::DiscountTable.create(discount_table_item)
+  # Inss::DiscountTable.create(discount_table_item)
+  Inss::DiscountTable.find_or_create_by(discount_table_item)
+end
+
+100.times do
+  new_employee = FactoryBot.build(:employee)
+  inss_discount = INSS::DiscountCalculation.new(new_employee.salary).call
+  new_employee.assign_attributes(inss_discount: inss_discount, discount_status: :applied)
+  new_employee.save!
 end
