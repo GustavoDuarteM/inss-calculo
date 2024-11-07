@@ -3,18 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe INSS::DiscountCalculation do
-  let(:discount_table_item1) { double('DiscountTableItem', min_range: 0, max_range: 1000, discount_percentage: 0.1) }
-  let(:discount_table_item2) do
-    double('DiscountTableItem', min_range: 1000.01, max_range: 2000, discount_percentage: 0.1)
-  end
-  let(:discount_table_item3) do
-    double('DiscountTableItem', min_range: 2000.01, max_range: 3000, discount_percentage: 0.1)
-  end
-  let(:discount_table) { [discount_table_item1, discount_table_item2, discount_table_item3] }
-  let(:discount_table_provider) { double('DiscountTable', call: discount_table) }
-
   before do
-    allow(INSS::DiscountTable).to receive(:new).and_return(discount_table_provider)
+    create(:inss_discount_table, min_range: 0, max_range: 1000, discount_percentage: 0.1)
+    create(:inss_discount_table, min_range: 1000.01, max_range: 2000, discount_percentage: 0.1)
+    create(:inss_discount_table, min_range: 2000.01, max_range: 3000, discount_percentage: 0.1)
   end
 
   describe '#call' do
