@@ -14,6 +14,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_07_023935) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "employees", force: :cascade do |t|
+    t.string "name", null: false
+    t.date "birth_date", null: false
+    t.string "id_document", null: false
+    t.float "salary", null: false
+    t.float "inss_discount", null: false
+    t.string "discount_status", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "inss_discount_tables", force: :cascade do |t|
     t.float "min_range", null: false
     t.float "max_range", null: false
