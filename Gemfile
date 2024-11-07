@@ -69,3 +69,7 @@ end
 
 
 gem "sidekiq", "~> 7.3"
+
+gem "rspec-rails", "~> 7.0"
+
+gem "rubocop", "~> 1.68"
