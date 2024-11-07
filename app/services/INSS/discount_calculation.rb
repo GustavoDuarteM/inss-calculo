@@ -4,7 +4,7 @@ module INSS
   class DiscountCalculation
     def initialize(base_salary)
       @base_salary = base_salary
-      @discount_table_provider = INSS::DiscountTable.new.call
+      @discount_table_provider = DiscountTableByBaseSalary.new(base_salary).call
     end
 
     def call
