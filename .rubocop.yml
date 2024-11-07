@@ -1,0 +1,18 @@
+AllCops:
+  NewCops: enable
+  Exclude:
+  - 'bin/**/*'
+  - 'db/**/*'
+  - 'log/**/*'
+  - 'config/**/*'
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Exclude:
+    - "**/*_spec.rb"
+
+Metrics/BlockLength:
+  Exclude:
+    - "**/*_spec.rb"
