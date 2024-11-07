@@ -2,7 +2,7 @@
 
 class Employee < ApplicationRecord
   enum discount_status: {
-    pending: 0,
-    applied: 1
+    pending: 'pending',
+    applied: 'applied'
   }
 end
