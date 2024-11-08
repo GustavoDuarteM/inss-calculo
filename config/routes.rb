@@ -8,5 +8,5 @@ Rails.application.routes.draw do
 
   mount Sidekiq::Web => '/sidekiq'
 
-  resources :employees, only: [:index,:new]
+  resources :employees, only: [:index,:new, :create]
 end
