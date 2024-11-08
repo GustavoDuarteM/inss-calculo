@@ -70,6 +70,7 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
   gem 'hotwire-livereload'
+  gem 'pry'
 end
 
 gem 'sidekiq', '~> 7.3'
@@ -79,3 +80,5 @@ gem 'rspec-rails', '~> 7.0'
 gem 'rubocop', '~> 1.68'
 
 gem 'view_component', '~> 3.20'
+
+gem 'kaminari', '~> 1.2'
