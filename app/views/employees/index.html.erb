@@ -1,10 +1,14 @@
-<h1>Empregados</h1>
-<hr>
-<div class=''>
+<div class='py-4 flex justify-between'>
   <div class=''>
-    <%= link_to 'Cadastrar Empregado', new_employee_path, class: '' %>
+    <h1 class='text-2xl font-semibold'>
+      Empregados
+    </h1>
+  </div>
+  <div class=''>
+    <%= link_to 'Cadastrar Empregado', new_employee_path, class: 'text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none' %>
   </div>
 </div>
+<hr>
 <div class='flex flex-wrap gap-4 justify-evenly'>
   <%= render Employees::EmployeesChartComponent.new %>
   <%= render Employees::EmployeesCategoryTableComponent.new %>
