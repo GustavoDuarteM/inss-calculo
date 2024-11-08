@@ -7,6 +7,7 @@ module Employees
     def initialize(params)
       @params = params
       @employee_provider = Employee
+      @update_discount_salary_provider = Employees::UpdateDiscountSalaryJob
     end
 
     def call
@@ -14,7 +15,7 @@ module Employees
       employee.assign_attributes(inss_discount: 0, discount_status: :pending)
       employee.save!
 
-      Employees::UpdateDiscountSalaryJob.perform_later(employee) if employee.valid?
+      @update_discount_salary_provider.perform_later(employee) if employee.valid?
 
       [employee, employee.valid?]
     end

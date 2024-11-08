@@ -9,6 +9,7 @@ module Employees
       @employee = Employee.find(employee_id)
       @employee_initial = @employee.dup
       @params = params
+      @update_discount_salary_provider = Employees::UpdateDiscountSalaryJob
     end
 
     def call
@@ -17,7 +18,7 @@ module Employees
 
       employee.save!
 
-      Employees::UpdateDiscountSalaryJob.perform_later(employee) if employee.valid? && salary_changed?
+      @update_discount_salary_provider.perform_later(employee) if employee.valid? && salary_changed?
 
       [employee, employee.valid?]
     end
