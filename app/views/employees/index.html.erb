@@ -4,9 +4,9 @@
   <div class=''>
     <%= link_to 'Cadastrar Empregado', new_employee_path, class: '' %>
   </div>
+</div>
+<div class='flex flex-wrap gap-4 justify-evenly'>
+  <%= render Employees::EmployeesChartComponent.new %>
   <%= render Employees::EmployeesCategoryTableComponent.new %>
 </div>
-
-<div>
-  <%= render Employees::EmployeesTableComponent.new(params: params) %>
-</div>
+<%= render Employees::EmployeesTableComponent.new(params: params) %>
