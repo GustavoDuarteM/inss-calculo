@@ -8,7 +8,7 @@ class EmployeesController < ApplicationController
   end
 
   def create
-    @employee, success = Employees::CreateEmployee.new(create_employee_params).call
+    @employee, success = Employees::CreateEmployee.new(employee_params).call
 
     if success
       redirect_to employees_path
@@ -17,9 +17,23 @@ class EmployeesController < ApplicationController
     end
   end
 
+  def edit
+    @employee = Employee.find(params[:id])
+  end
+
+  def update
+    @employee, success = Employees::UpdateEmployee.new(params[:id], employee_params).call
+
+    if success
+      redirect_to employees_path
+    else
+      render :edit
+    end
+  end
+
   private
 
-  def create_employee_params
-    params.require(:employee).permit(:name, :birth_date, :id_document, :salary, :inss_discount)
+  def employee_params
+    params.require(:employee).permit(:name, :birth_date, :id_document, :salary)
   end
 end

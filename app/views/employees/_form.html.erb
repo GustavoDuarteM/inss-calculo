@@ -18,24 +18,24 @@
   <div class="mb-5">
     <%= form.label 'Salário', class: 'block mb-2 text-sm font-medium text-gray-900' %>
     <%= form.text_field :salary,
+                        value: number_to_currency(@employee.salary, unit: "", separator: ",", delimiter: "."),
                         'data-employees--form-target' => "baseSalary",
                         placeholder: 'R$ 1.000,00', 
                         class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5', 
                         required: true %>
   </div>
 
-
   <div class="mb-5">
     <%= form.label 'Desconto INSS', class: 'block mb-2 text-sm font-medium text-gray-900' %>
-    <%= form.hidden_field :inss_discount, 'data-employees--form-target' => "inssDiscount" %>
     <%= form.text_field :salary_discount, 
+                        value: number_to_currency(@employee.inss_discount, unit: "", separator: ",", delimiter: "."),
                         'data-employees--form-target' => "salaryDiscount",
                         class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5', 
                         disabled: true %>
   </div>
 
   <div class="actions">
-    <%= form.submit 'Cadastrar', class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer' %>
+    <%= form.submit 'Salvar', class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer' %>
     <%= link_to 'Voltar', employees_path, class: 'bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded' %>
   </div>
 <% end %>

@@ -5,7 +5,7 @@ import { NumberInput } from "controllers/utils/number_input"
 import Inputmask from 'inputmask'
 
 export default class extends Controller {
-  static targets = ["baseSalary", "salaryDiscount", "inssDiscount", "idDocument"]
+  static targets = ["baseSalary", "salaryDiscount", "idDocument"]
 
   initialize() {
     Object.assign(this, NumberInput);
@@ -49,8 +49,7 @@ export default class extends Controller {
       connected() {
       },
       received(data) {
-        root.salaryDiscountTarget.value = data.salary_discount;      
-        root.inssDiscountTarget.value = data.inss_discount;
+        root.salaryDiscountTarget.value = data.salary_discount;
       },
       disconnected() {
       },

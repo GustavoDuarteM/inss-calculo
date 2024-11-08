@@ -11,8 +11,10 @@ module Employees
 
     def call
       employee = @employee_provider.new(params)
-      employee.discount_status = :applied
+      employee.assign_attributes(inss_discount: 0, discount_status: :pending)
       employee.save!
+
+      Employees::UpdateDiscountSalaryJob.perform_later(employee) if employee.valid?
 
       [employee, employee.valid?]
     end
