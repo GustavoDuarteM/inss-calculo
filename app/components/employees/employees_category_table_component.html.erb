@@ -1,23 +1,32 @@
-<div class="grid grid-cols-2 bg-gray-100 rounded-lg w-[600px] text-center">
-  <div class="font-bold p-2 border-gray-300 border-b-2">
-    Faixa salarial
-  </div>
-  <div class="font-bold border-gray-300 border-l-2 border-b-2 p-2">
-    Empregados 
-  </div>
-
-  <% classificated_salaries.each do |classificated_salary| %>
-    <div>
-      De <%= to_currency(classificated_salary.min_range) %> a <%= to_currency(classificated_salary.max_range) %>
-    </div>
-    <div class="border-l-2 border-gray-300">
-      <%= classificated_salary.employees_count %>
-    </div>
-  <% end %>
-  <div>
-    Acima de <%= to_currency(classificated_salaries.last.max_range) %>
-  </div>
-  <div class="border-l-2 border-gray-300">
-    <%= out_of_range_classificated_salaries.employees_count  %>
+<div class="p-4">
+  <div class="relative overflow-x-auto">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+        <tr>
+          <th class="p-4" scope="col"> Faixa salarial</th>
+          <th class="p-4" scope="col">Empregados</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% classificated_salaries.each do |classificated_salary| %>
+          <tr class="bg-white border-b hover:bg-gray-50 cursor-pointer hover:text-gray-900">
+            <td class="p-4">
+              De <%= to_currency(classificated_salary.min_range) %> a <%= to_currency(classificated_salary.max_range) %>
+            </td>
+            <td class="p-4">
+              <%= classificated_salary.employees_count %>
+            </td>
+          </tr>
+        <% end %>
+        <tr class="bg-white border-b hover:bg-gray-50 cursor-pointer hover:text-gray-900">
+          <td class="p-4">
+            Acima de <%= to_currency(classificated_salaries.last.max_range) %>
+          </td>
+          <td class="p-4">
+            <%= out_of_range_classificated_salaries.employees_count  %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
