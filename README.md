@@ -1,24 +1,40 @@
-# README
+# Desafio INSS
+  Uma aplicação para gerenciar os funcionários e calcular o  desconto do INSS.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### 🛠️ Stack 
+ - Docker Compose
+ - Ruby 
+ - Rails
+ - Postgres
+ - Redis 
+ - Sidekiq 
 
-Things you may want to cover:
+### ⚙️ Configurações 
+Para rodar o projeto você vai precisar ter instalado o docker
 
-* Ruby version
+### 🚀 Inicializando o projeto 
+1º Clone o repositório
 
-* System dependencies
+2º Ative os containers do projeto
+```
+$ docker-compose up
+```
 
-* Configuration
+3º setup do projeto rails 
 
-* Database creation
+ - Instale as dependências `bundle install.`
+ - Crie o banco de dados  `db:create`.
+ - Rode as migrações com o comando `rails db:migrate`.
+ - Rode o seed com o comando `rails db:seed`.
+ - Inicie o servidor com o comando `rails server`.
+ - Inicie Sidekiq com o comando `bundle exec sidekiq`.
 
-* Database initialization
+✨ O projeto está rodando e pode ser acessado http://localhost:3000/
 
-* How to run the test suite
+### ⚡Como testar   
+  Os teste foram escrito com ajuda do [rspec](https://rspec.info/)
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+ Para rodar os teste 
+```
+$ rspec 
+```
