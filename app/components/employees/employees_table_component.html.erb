@@ -1,0 +1,32 @@
+<div class="p-4">
+  <div class="relative overflow-x-auto">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+        <tr>
+          <th class="p-4" scope="col">Nome</th>
+          <th class="p-4" scope="col">Data de Nascimento</th>
+          <th class="p-4" scope="col">CPF</th>
+          <th class="p-4" scope="col">Salario</th>  
+          <th class="p-4" scope="col">Desconto INSS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% employees.each do |employee| %>
+          <tr class="bg-white border-b hover:bg-gray-50 cursor-pointer hover:text-gray-900">
+            <td class="p-4"><%= employee.name %></td>
+            <td class="p-4"><%= employee.birth_date.strftime('%d/%m/%Y') %></td>
+            <td class="p-4"><%= employee.id_document %></td>
+            <td class="p-4"><%= to_currency(employee.salary) %></td>
+            <td class="p-4"><%= to_currency(employee.inss_discount) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="p-4 flex justify-center align-center">
+    <div>
+      <%= paginate employees %>
+    </div>
+  </div>
+</div>
