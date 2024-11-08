@@ -8,6 +8,7 @@
           <th class="p-4" scope="col">CPF</th>
           <th class="p-4" scope="col">Salario</th>  
           <th class="p-4" scope="col">Desconto INSS</th>
+          <th class="p-4" scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -18,6 +19,9 @@
             <td class="p-4"><%= employee.id_document %></td>
             <td class="p-4"><%= to_currency(employee.salary) %></td>
             <td class="p-4"><%= to_currency(employee.inss_discount) %></td>
+            <td class="p-4">
+              <%= link_to 'Editar', edit_employee_path(employee), class: 'text-blue-500' %>
+            </td>
           </tr>
         <% end %>
       </tbody>
