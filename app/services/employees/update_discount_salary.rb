@@ -11,10 +11,8 @@ module Employees
 
     def call
       return if @employee.applied?
-
-      Employee.transaction do
-        @employee.update(inss_discount: @discount_calculator_provider.call, discount_status: :applied)
-      end
+      
+      @employee.update!(inss_discount: @discount_calculator_provider.call, discount_status: :applied)
     end
   end
 end
