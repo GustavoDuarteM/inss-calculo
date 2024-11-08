@@ -27,6 +27,10 @@ RSpec.describe Employees::UpdateEmployee do
         expect(employee).to be_a(Employee)
         expect(valid).to be_truthy
       end
+
+      it 'enqueues a job' do
+        expect { subject.call }.to change(Sidekiq::Queues['default'], :size).by(1)
+      end
     end
 
     context 'when employee is invalid' do
